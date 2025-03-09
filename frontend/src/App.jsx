@@ -3,7 +3,7 @@ import {
   Routes,
   Route,
   Navigate,
-} from "react/react-router-dom";
+} from "react-router-dom";
 import LoginForm from "./pages/Auth/LoginForm";
 
 import SignUpForm from "./pages/Auth/SignUpForm";
@@ -15,9 +15,9 @@ const App = () => {
     <div>
       <Router>
         <Routes>
-          <Route path="/" element={<Rout />} />
+          <Route path="/" element={<Root />} />
           <Route path="/login" element={<LoginForm />} />
-          <Route path="/signUp" element={<SignUpForm />} />
+          <Route path="/signup" element={<SignUpForm />} />
           <Route path="/dashboard" element={<Home />} />
           <Route path="/income" element={<Income />} />
           <Route path="/expense" element={<Expense />} />
@@ -28,3 +28,18 @@ const App = () => {
 };
 
 export default App;
+
+const Root = () => {
+  // check if token exists in localStorage
+  const isAuthenticated = !!localStorage.getItem("token");
+  //Equivalent to
+  // const isAuthenticated = localStorage.getItem("token") ? true : false ;
+
+  // Redirect To dashboard if authenticated, otherwise to login
+
+  return isAuthenticated ? (
+    <Navigate to="/dashboard" />
+  ) : (
+    <Navigate to="/login" />
+  );
+};

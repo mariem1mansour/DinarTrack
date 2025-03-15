@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthLayout from "./../../components/Layout/AuthLayout";
 import ProfilePhotoSelector from "../../components/Inputs/ProfilePhotoSelector";
 import Input from "./../../components/Inputs/Input";
+import { validateEmail } from "./../../utils/helper";
 
 const SignUpForm = () => {
   const [profilePic, setProfilePic] = useState(null);
@@ -12,7 +13,24 @@ const SignUpForm = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   //handle sign up form submit
-  const handleSignUp = async (e) => {};
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    let profileImageUrl = "";
+    if (!fullName) {
+      setError("Please Enter Your Name ");
+      return;
+    }
+    if (!validateEmail(email)) {
+      setError("Please Enter A Valid Email Address !");
+      return;
+    }
+    if (!password) {
+      setError("Please Enter A Password !");
+      return;
+    }
+    setError("");
+    //Sign Up API Call
+  };
   return (
     <AuthLayout>
       <div className="lg:w-[100%] h-auto md:h-full mt-10 md:mt-0 flex flex-col justify-center ">
@@ -26,7 +44,7 @@ const SignUpForm = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
             <Input
               placeholder="Mariem"
-              onChange={({ target }) => setEmail(target.value)}
+              onChange={({ target }) => setFullName(target.value)}
               value={fullName}
               label="Full Name"
               type="full Name"

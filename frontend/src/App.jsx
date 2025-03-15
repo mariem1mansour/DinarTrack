@@ -6,10 +6,11 @@ import {
 } from "react-router-dom";
 import LoginForm from "./pages/Auth/LoginForm";
 
-import SignUpForm from "./pages/Auth/SignUpForm";
+
 import Home from "./pages/Dashboard/Home";
 import Income from "./pages/Dashboard/Income";
 import Expense from "./pages/Dashboard/Expense";
+import SignUpForm from "./pages/Auth/SignUpForm";
 const App = () => {
   return (
     <div>

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Input from "../../components/Inputs/Input";
 import AuthLayout from "../../components/Layout/AuthLayout";
-import App from "./../../App";
 import { Link } from "react-router-dom";
 import { validateEmail } from "../../utils/helper";
 
@@ -51,7 +50,7 @@ const LoginForm = () => {
           </button>
           <p className="text-[13px] text-slate-800 mt-3">
             Don't have an account ?{" "}
-            <Link className="font-medium text-primary underline " to="/signup">
+            <Link className="font-medium text-primary underline " to='/signup'>
               Sign Up
             </Link>
           </p>
